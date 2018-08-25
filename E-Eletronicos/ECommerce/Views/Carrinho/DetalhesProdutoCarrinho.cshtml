@@ -1,0 +1,77 @@
+﻿@model ECommerce.Modelo.DB.Model.Produto
+
+@{
+    ViewBag.Title = "DetalhesProdutoCliente";
+}
+
+<h2>Detalhes @Model.Nome</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Imagem
+        </dt>
+        <dd>
+            <!--Buscando a imagem para a exibição na view-->
+            <img src="@Url.Content("~/Images/Produtos/" + Model.Imagem)" height="300" width="300" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <td>
+            @using (Html.BeginForm("AtualizarProdutoCarrinho", "Carrinho", new { id = Model.Id }))
+            {
+            <dt>
+                Quantidade
+            </dt>
+
+                <dd>
+                    <input type="text" class="form-control" id="qtd" name="qtd" value="1" />
+                </dd>
+
+                <br />
+
+                <dd>
+                    <button style="width:50%" align="center" class="botao btn btn-success btn-md" type="submit">Adicionar ao Carrinho</button>
+                </dd>
+            }
+            </td>
+
+
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Voltar", "Index", "Home")
+    </p>

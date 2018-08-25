@@ -1,0 +1,65 @@
+﻿@using ECommerce.Modelo.Utils;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ECommerce Eletrônicos</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    <style>
+        .glyphicon {
+            position: inherit;
+            top: 15px;
+            display: inline-block;
+            font-family: 'Glyphicons Halflings';
+            -webkit-font-smoothing: antialiased;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+        }
+    </style>
+    <div style="background-color: rgba(0, 0, 0, 1)" align="center">
+        <img src="~/Images/Logo.png" width="200" height="200" class="glyphicon-align-center"/>
+        <img src="~/Images/NomeLoja.png" width="900" height="200"/>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (LoginUtils.Login != null)
+                    {
+                        @Html.Partial("_MenuLogado")
+                    }
+                    else
+                    {
+                        @Html.Partial("_MenuDefault")
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderPage("_Slider.cshtml")
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+        <footer>
+            @RenderPage("_Footer.cshtml")
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@using ECommerce.Modelo.Utils;
+@using ECommerce.Modelo.DB.Model;
+
+<style>
+    .glyphicon {
+        position: inherit;
+        top: 15px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+    }
+</style>
+
+<div class="navbar navbar-inverse navbar-fixed-top collapse navbar-collapse " id="myNavbar">
+    <ul class="nav navbar-nav">
+        <li class="active cor">
+            @Html.ActionLink("Home", "Index","Home")
+        </li>
+        <li>
+            @Html.ActionLink("Serviços", "")
+        </li>
+        <li>
+            @Html.ActionLink("Loja", "")<!--A home já será a Loja, acho que essa vai sair-->
+        </li>
+        <li>
+            @Html.ActionLink("Quem Somos", "")
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">@LoginUtils.Login.usuario</a></li>
+        <li><span class="glyphicon glyphicon-user"></span></li>
+        @{
+            IList<Cliente> cli = new List<Cliente>();
+            cli = LoginUtils.Login.cliente;
+            Guid id = new Guid();
+
+            foreach (Cliente c in cli)
+            {
+                id = c.idCliente;
+            }
+
+            <li>@Html.ActionLink("Minha Conta", "DetalhesCliente", "Admin", new { Id = id }, "")</li>
+         }
+        <li><span class="glyphicon glyphicon-user"></span></li>
+        <li>@Html.ActionLink("Sair", "Deslogar", "Cliente")</li>
+        <li><span class="glyphicon glyphicon-shopping-cart"></span></li>
+        <li>@Html.ActionLink("Carrinho", "MeuCarrinho", "Carrinho")</li>
+    </ul>
+</div>

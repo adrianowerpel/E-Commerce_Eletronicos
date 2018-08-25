@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ECommerce.Modelo.DB.Model.Fabricante>
+
+@{
+    ViewBag.Title = "ControleFabricantes";
+}
+
+<h2>ControleFabricantes</h2>
+
+<p>
+    @Html.ActionLink("Novo Fabricante", "InserirFabricante")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cnpj)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefone)
+        </td>
+        <td>
+            @Html.ActionLink("Selecionar", "SetarFabricanteProduto","Fabricante", new { id = item.IdFabricante },null) |
+            @Html.ActionLink("Editar", "EditarFabricante", new { id = item.IdFabricante }) |
+            @Html.ActionLink("Detalhes", "DetalhesFabricante", new { id = item.IdFabricante }) |
+            @Html.ActionLink("Deletar", "ApagarFabricante", new { id = item.IdFabricante })
+        </td>
+    </tr>
+}
+
+    <div>
+        @Html.ActionLink("Area Administrador", "AreaAdministrador", "Admin")
+    </div>
+
+</table>

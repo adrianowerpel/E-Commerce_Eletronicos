@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ECommerce.Modelo.DB.Model.HistoricoBusca>
+
+@{
+    ViewBag.Title = "HistoricoPesquisa";
+}
+
+<h2>Seu Histórico de Pesquisa</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Imagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataHota)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <!--Buscando a imagem para a exibição na view-->
+            <img src="@Url.Content("~/Images/Produtos/" + item.produto.Imagem)" height="100" width="100" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produto.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produto.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataHota)
+        </td>
+        <td>
+            @Html.ActionLink("Detalhes", "DetalhesProdutoCliente","Produto", new {  id=item.produto.Id  },null) |
+            @Html.ActionLink("Apagar da Lista", "ApagarItemHistorico","Cliente", item ,null)
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @using (Html.BeginForm("ApagarTodoHistorico", "Cliente", FormMethod.Post))
+            {
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Apagar Histórico" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</p>

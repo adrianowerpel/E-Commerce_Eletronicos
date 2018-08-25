@@ -1,0 +1,34 @@
+﻿<style>
+    .glyphicon {
+        position: inherit;
+        top: 15px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings';
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+    }
+</style>
+
+<div class="navbar navbar-inverse navbar-fixed-top collapse navbar-collapse " id="myNavbar">
+    <ul class="nav navbar-nav">
+        <li class="active cor">
+            @Html.ActionLink("Home", "Index","Home")
+        </li>
+        <li>
+            @Html.ActionLink("Serviços", "")
+        </li>
+        <li>
+            @Html.ActionLink("Quem Somos", "")
+        </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><span class="glyphicon glyphicon-plus"></span></li>
+        <li>@Html.ActionLink("Cadastrar", "CadastrarLoginCliente", "Cliente")</li>
+        <li><span class="glyphicon glyphicon-user"></span></li>
+        <li>@Html.ActionLink("Entrar", "Login", "Home")</li>
+        <li><span class="glyphicon glyphicon-shopping-cart"></span></li>
+        <li>@Html.ActionLink("Carrinho", "MeuCarrinho", "Carrinho")</li>
+    </ul>
+</div>

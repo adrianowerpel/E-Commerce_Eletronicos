@@ -1,0 +1,43 @@
+﻿@model ECommerce.Modelo.DB.Model.Fabricante
+
+@{
+    ViewBag.Title = "DetalhesFabricante";
+}
+
+<h2>DetalhesFabricante</h2>
+
+<div>
+    <h4>Fabricante</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cnpj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cnpj)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Editar", "EditarFabricante", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Voltar a Lista", "ControleFabricantes")
+</p>

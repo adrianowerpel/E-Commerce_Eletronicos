@@ -1,0 +1,76 @@
+﻿@model ECommerce.Modelo.DB.Model.Produto
+
+@{
+    ViewBag.Title = "DetalhesProduto";
+}
+
+<h2>Detalhes @Model.Nome</h2>
+
+<div>
+    <h4>Produto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Imagem
+        </dt>
+        <dd>
+            <!--Buscando a imagem para a exibição na view-->
+            <img src="@Url.Content("~/Images/Produtos/" + Model.Imagem)" height="200" width="200" />
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+    </dl>
+</div>
+
+@Html.Action("BuscarProduto", "Fabricante", new { id = Model.Id })
+@using (Html.BeginForm("ControleFabricantes", "Fabricante", FormMethod.Post))
+{
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Selecionar Fabricante" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<p>
+    @Html.ActionLink("Editar", "EditarProduto", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar a Lista", "ControleProdutos")
+</p>

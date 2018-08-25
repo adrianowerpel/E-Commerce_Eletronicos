@@ -1,0 +1,102 @@
+﻿@model ECommerce.Modelo.DB.Model.Cliente
+
+@{
+    ViewBag.Title = "DetalhesCliente";
+}
+
+<h2>Detalhes da Conta</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <hr />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.sobrenome)
+        </dd>
+        <hr />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cpf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cpf)
+        </dd>
+        <hr />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.telefone)
+        </dd>
+        <hr />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+        <hr />
+
+    </dl>
+</div>
+
+<table class="table">
+    <tr>
+        <td>
+            @using (Html.BeginForm("EnderecosCliente", "Cliente", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Meus Endereços" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </td>
+
+        <td>
+            @using (Html.BeginForm("HistoricoPesquisa", "Cliente", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <div>
+                        <input type="submit" value="Histórico de Buscas" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </td>
+
+        <td>
+            <div class="form-group">
+                <div>
+                    @Html.Action("BuscarCliente", "Cliente", new { id = Model.idCliente })
+                    @Html.ActionLink("Novo Endereço", "CadastrarEndereco", "Cliente", new { id = Model.idCliente }, "")
+                </div>
+            </div>
+        </td>
+
+        <td>
+            <div class="form-group">
+                <div>
+                    @Html.ActionLink("Editar", "EditarCliente", new { id = Model.idCliente })
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+    <div class="form-group">
+        <div>
+            @Html.ActionLink("Voltar", "Index", "Home")
+        </div>
+    </div>

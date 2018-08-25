@@ -1,0 +1,60 @@
+﻿@using ECommerce.Modelo.DB.Model
+
+@model IEnumerable<ECommerce.Modelo.DB.Model.Carrinho>
+
+@{
+    ViewBag.Title = "MeuCarrinho";
+}
+
+<h2>Meu Carrinho</h2>
+
+@Html.ActionLink("finalizar", "VenderProduto", "Produto", null, null)
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Imagem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produto.Valor)
+        </th>
+        <th>
+            Fabricante
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content("~/Images/Produtos/" + item.produto.Imagem)" height="100" width="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantidade)
+            </td>
+            <th>
+                @Html.DisplayFor(model => item.produto.Nome)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.produto.Valor)
+            </th>
+            <th>
+                @Html.DisplayFor(model => item.produto.fabricante.Nome)
+            </th>
+            <td>
+                @Html.ActionLink("Detalhes", "DetalhesProdutoCarrinho", "Carrinho", new { id = item.produto.Id }, null) |
+                @Html.ActionLink("Retirar do Carrinho", "ApagarProdutoCarrinho", item, null)
+
+
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,104 @@
+﻿<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<script>
+    $(document).ready(function () {
+        $('#myCarousel').carousel({
+            interval: 2000
+        })
+        $('.carousel-inner .item').each(function () {
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < 2; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+    });
+</script>
+
+<style>
+    .carousel-inner.onebyone-carosel {
+        margin: auto;
+        width: 100%;
+    }
+
+    .onebyone-carosel .active.left {
+        left: -25.00%;
+    }
+
+    .onebyone-carosel .active.right {
+        left: 25.00%;
+    }
+
+    .onebyone-carosel .next {
+        left: 25.00%;
+    }
+
+    .onebyone-carosel .prev {
+        left: -25.00%;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div id="myCarousel" class="carousel fdi-Carousel slide">
+            <!-- Carousel items -->
+            <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
+                <div class="carousel-inner onebyone-carosel">
+                    <div class="item active">
+                        <div class="col-md-3">
+                            <a href="#"><img src="~/Images/Index/PCGameri5.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/PS4.jpg" />  </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/SamsungJ7.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/XboxOne.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/IphoneX.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/NotebookAsus.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/PlavaVideoGForce.jpg" /> </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="col-md-3">
+                            <a href="#"> <img src="~/Images/Index/ProcessadorAMD.jpg" /> </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
+                <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
+            </div>
+            <!--/carousel-inner-->
+        </div><!--/myCarousel-->
+    </div>
+</div>

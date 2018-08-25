@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ECommerce.Modelo.DB.Model.Cliente>
+
+@{
+    ViewBag.Title = "ControleUsuarios";
+}
+
+<h2>ControleUsuarios</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "CadastrarLoginCliente", "Cliente")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sobrenome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpf)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sobrenome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpf)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarCliente", new { id=item.idCliente}) |
+            @Html.ActionLink("Detalhes", "DetalhesCliente", new {  id=item.idCliente}) |
+            @Html.ActionLink("Deletar", "ApagarCliente", new {  id=item.idCliente })
+        </td>
+    </tr>
+}
+
+    <div>
+        @Html.ActionLink("Area Administrador", "AreaAdministrador", "Admin");
+    </div>
+
+
+</table>

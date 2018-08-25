@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ECommerce.Modelo.DB.Model.Produto>
+
+@{
+    ViewBag.Title = "ControleProdutos";
+}
+
+<h2>Controle de Produtos</h2>
+<hr/>
+<p>
+    @Html.ActionLink("Novo Produto", "InserirProduto")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Imagen
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <!--Buscando a imagem para a exibição na view-->
+            <img src="@Url.Content("~/Images/Produtos/" + item.Imagem)" height="100" width="100" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estoque)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarProduto", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "DetalhesProduto", new { id=item.Id }) |
+            @Html.ActionLink("Deletar", "ApagarProduto", new { id=item.Id })
+        </td>
+    </tr>
+}
+<hr/>
+    <div>
+        @Html.ActionLink("Area Administrador", "AreaAdministrador", "Admin")
+    </div>
+
+</table>
